@@ -102,3 +102,12 @@ especially for the next generation — then come build Jules with us!
 # License
 [MIT License](LICENSE.md)
 
+
+## 🗣️ We Want Your Input!
+
+Jules is an evolving project — and your feedback matters!
+
+👉 [Join the Discussion Here](https://github.com/jules0000/Jules/discussions/1)
+
+Help shape a new language from scratch — designed for beginners and the next generation of coders!
+
