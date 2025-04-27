@@ -1,4 +1,3 @@
-Of course! Here's the full, clean **README.md** you can copy-paste directly:
 
 ---
 
@@ -101,5 +100,5 @@ especially for the next generation — then come build Jules with us!
 ---
 
 # License
-[MIT License](LICENSE)
-```
+[MIT License](LICENSE.md)
+
