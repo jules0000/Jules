@@ -1,37 +1,99 @@
-# Jules Language Quick Reference
+# Jules Language Guide
+
+Jules is a beginner-friendly programming language designed to be readable, simple, and close to natural English. This guide will help you understand how to use Jules and address common issues.
+
+## Table of Contents
+- [Basic Syntax](#basic-syntax)
+- [Working with Variables](#working-with-variables)
+- [String Operations](#string-operations)
+- [Numbers and Math](#numbers-and-math)
+- [Control Structures](#control-structures)
+- [Using the Ask Command](#using-the-ask-command)
+- [Common Issues and Solutions](#common-issues-and-solutions)
+- [Examples](#examples)
 
 ## Basic Syntax
 
-### Output to screen
+### Output text to the screen
 ```jules
-show "Hello, World!"
+show "Hello World!"
 ```
 
-### Variables
+### Comments
+```jules
+# This is a comment
+# Comments must be on their own line
+```
+
+## Working with Variables
+
+### Assigning variables
 ```jules
 name is "Alice"
 age is 25
+is_student is yes  # Boolean true
 ```
+
+### Using variables
+```jules
+show name
+show age
+```
+
+## String Operations
 
 ### String concatenation
 ```jules
-# Text + Text
-show "Hello, " + name
+first_name is "John"
+last_name is "Doe"
 
-# Text + Number (needs text() conversion)
+# Concatenate strings
+full_name is first_name + " " + last_name
+show full_name  # Shows "John Doe"
+```
+
+### Important: When concatenating with numbers
+```jules
+age is 25
+
+# WRONG - Will not work correctly
+show "Age: " + age
+
+# CORRECT - Convert number to text first
 show "Age: " + text(age)
 ```
 
-### Numbers and calculations
+## Numbers and Math
+
+### Numeric variables
 ```jules
 x is 10
 y is 5
-sum is x + y
-show "Sum: " + text(sum)  # Must convert numbers to text for display
+
+# Basic operations
+sum is x + y        # 15
+difference is x - y # 5
+product is x * y    # 50
+quotient is x / y   # 2
 ```
 
-### Conditions
+### Converting between types
 ```jules
+# String to number
+age_text is "25"
+age_number is number(age_text)  # Converts to 25
+
+# Number to string
+count is 10
+count_text is text(count)  # Converts to "10"
+```
+
+## Control Structures
+
+### Conditionals
+```jules
+age is 16
+
 when age less than 18 then
     show "You are under 18"
 otherwise
@@ -41,88 +103,121 @@ done
 
 ### Loops
 ```jules
+# Repeat a fixed number of times
 repeat 5 times
     show "Count: " + text(count)
 done
+
+# Iterate over items
+names is ["Alice", "Bob", "Charlie"]
+repeat each person in names
+    show "Hello, " + person
+done
+
+# While loop
+number is 1
+while number less than 5
+    show text(number)
+    number is number + 1
+done
 ```
 
-## Working Script Examples
+## Using the Ask Command
 
-### Example 1: Basic variables and display
+The `ask` command lets you get input from the user:
+
 ```jules
-show "Jules in VS Code"
-
-name is "Student"
+# Ask for input and store in variable
+ask "What is your name?" into name
 show "Hello, " + name
 
-age is "25"
-show "Your age is: " + age
+ask "How old are you?" into age
+age_number is number(age)
+show "Next year you will be " + text(age_number + 1)
 ```
 
-### Example 2: Number calculations
+**Note**: If you get an error with the `ask` command, use the special `jules_runner.py` script to run your program:
+```
+python jules_runner.py your_script.jules
+```
+
+## Common Issues and Solutions
+
+### 1. String concatenation with numbers
+If you see errors or unexpected output with string concatenation, make sure to convert numbers to text:
 ```jules
-# Set age as text
-age is "25"
-
-# Convert to number for calculation
-age_num is number(age)
-future_age is age_num + 10
-show "In 10 years you'll be: " + text(future_age)
+age is 25
+# CORRECT:
+show "Age: " + text(age)
 ```
 
-## Common Issues
+### 2. Comments at end of lines
+Jules does not support comments at the end of code lines:
+```jules
+# WRONG:
+name is "Alice"  # This is a user name
 
-1. **String Concatenation with Numbers**
-   
-   When using `show` with numbers, you must convert them to text:
-   ```jules
-   # WRONG - Will not work
-   show "Age: " + age
-   
-   # CORRECT - Convert number to text
-   show "Age: " + text(age)
-   ```
+# CORRECT:
+# This is a user name
+name is "Alice"
+```
 
-2. **The `ask` Command**
-   
-   The `ask` command may not work in some environments:
-   ```jules
-   # Instead of:
-   ask "What is your name?" into name
-   
-   # Use direct assignment:
-   name is "Alice"
-   ```
+### 3. Import errors in external folders
+If you see "Import jules.core.interpreter could not be resolved" in an external folder, use:
+```
+python jules_runner.py your_file.jules
+```
 
-3. **Comments**
-   
-   Comments must be on their own line, not at the end of code lines:
-   ```jules
-   # This is a comment
-   name is "Alice"  # This will cause errors!
-   ```
+## Examples
 
-4. **Variable Types**
-   
-   Variables can store different types:
-   ```jules
-   # Store as text
-   age_text is "25"
-   
-   # Store as number
-   age_num is 25
-   
-   # Convert between types
-   age_from_text is number(age_text)
-   age_to_text is text(age_num)
-   ```
+### Simple greeting program
+```jules
+# Ask for user's name
+ask "What is your name?" into name
 
-## Debugging
+# Say hello
+show "Hello, " + name
+show "Welcome to Jules!"
 
-If your Jules script isn't working as expected:
+# Ask for age
+ask "How old are you?" into age
+age_number is number(age)
 
-1. Run it with the debug_runner.py: `python debug_runner.py your_script.jules`
-2. Make sure string concatenation uses text() for numbers
-3. Keep comments on separate lines
-4. Avoid complex expressions - break them into simpler steps
-5. Check the Jules sample script for correct syntax examples 
+# Show different messages based on age
+when age_number less than 18 then
+    show "You are quite young!"
+otherwise
+    show "You are an adult!"
+done
+
+show "Thank you for using Jules!"
+```
+
+### Number guessing game
+```jules
+# Simple number guessing game
+secret is 42
+guesses is 0
+guessed is no
+
+show "I'm thinking of a number between 1 and 100"
+
+while guessed is no
+    ask "What's your guess?" into guess
+    guess_number is number(guess)
+    guesses is guesses + 1
+    
+    when guess_number is secret then
+        show "Correct! You got it in " + text(guesses) + " tries!"
+        guessed is yes
+    otherwise when guess_number less than secret then
+        show "Too low, try again"
+    otherwise
+        show "Too high, try again"
+    done
+done
+```
+
+---
+
+For more examples, check the `examples/` folder in the Jules language directory. 
