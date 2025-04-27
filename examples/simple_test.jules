@@ -1,0 +1,16 @@
+# Simple Jules Test
+
+# Output a simple message
+show "Hello from simple Jules!"
+
+# Variable assignment
+name is "World"
+count is 5
+
+# Show variables
+show "Hello, " + name + "!"
+show "Count: " + count
+
+# Boolean values
+happy is yes
+show "Happy: " + happy 

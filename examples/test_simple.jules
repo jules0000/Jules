@@ -1,0 +1,21 @@
+# Very Simple Test
+
+show "Starting basic test..."
+
+# Basic assignments and output
+name is "Jules"
+age is 10
+
+show "Name: " + name
+show "Age: " + text(age)
+
+# Function definition
+make add(a, b)
+    return a + b
+done
+
+# Function call
+result is add(5, 10)
+show "5 + 10 = " + text(result)
+
+show "Basic test complete!" 

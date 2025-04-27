@@ -1,0 +1,41 @@
+# Jules Sample Program
+# This file demonstrates the Jules language features
+
+# Basic output
+show "Welcome to Jules Programming!"
+show "=============================="
+
+# Variables
+name is "Jules"
+age is 10
+pi is 3.14159
+is_learning is yes
+
+# Display variables
+show "Name: " + name
+show "Age: " + text(age)
+show "Pi: " + text(pi)
+show "Learning? " + text(is_learning)
+
+# Arithmetic
+x is 10
+y is 5
+show "x + y = " + text(x + y)
+show "x - y = " + text(x - y)
+
+# Conditionals
+when age less than 18 then
+    show "You are a child or teenager"
+otherwise
+    show "You are an adult"
+done
+
+# Loops
+show "Counting to 5:"
+repeat 5 times
+    show text(count)
+done
+
+# End of program
+show "=============================="
+show "End of Jules sample program!" 

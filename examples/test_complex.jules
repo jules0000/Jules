@@ -1,0 +1,35 @@
+# Complex Test File
+
+show "Starting complex test..."
+
+# Test loops followed by function definition
+show "Testing loops and functions:"
+
+show "Loop 1:"
+repeat 2 times
+    show "Iteration " + text(count)
+done
+
+show "Defining function 1"
+make add(a, b)
+    return a + b
+done
+
+show "Loop 2:"
+repeat 2 times
+    show "Second loop iteration " + text(count)
+done
+
+show "Defining function 2"
+make multiply(a, b)
+    return a times b
+done
+
+# Now use the functions
+result is add(5, 10)
+show "5 + 10 = " + text(result)
+
+result is multiply(6, 7)
+show "6 * 7 = " + text(result)
+
+show "Test complete!" 

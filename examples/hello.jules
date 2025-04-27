@@ -1,0 +1,6 @@
+# Super simple Hello World
+# This should work with both interpreters
+
+show "Hello from Jules!"
+name is "World"
+show "Hello, " + name + "!" 

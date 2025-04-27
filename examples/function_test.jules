@@ -1,0 +1,13 @@
+# Function Test
+
+show "Function test starting..."
+
+# Define a function
+make double(x)
+    return x times 2
+done
+
+# Call the function
+show "Result: " + text(double(5))
+
+show "Function test complete!" 

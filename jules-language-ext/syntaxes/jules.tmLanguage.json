@@ -1,0 +1,45 @@
+{
+    "name": "Jules",
+    "scopeName": "source.jules",
+    "fileTypes": ["jules"],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.number-sign.jules",
+                    "match": "#.*$"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.jules",
+                    "match": "\\b(show|is|make|do|when|then|otherwise|done|repeat|times|each|in|while|return|try|catch)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.jules",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.jules",
+                    "match": "\\\\."
+                }
+            ]
+        }
+    }
+} 

@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Jules File",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/jules_runner.py",
+            "args": [
+                "${file}"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Jules Interactive Mode",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/jules.py",
+            "args": [],
+            "console": "integratedTerminal"
+        }
+    ]
+}

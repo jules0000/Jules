@@ -1,0 +1,63 @@
+# Number Guessing Game in Jules
+
+# Function to generate a random number between min and max
+make random_number(min, max)
+    # Since we don't have a built-in random function yet,
+    # We'll use a simple algorithm
+    seed is 42  # Would normally use time
+    return min + (seed times 17) % (max - min + 1)
+done
+
+# Procedure to print the game instructions
+do show_instructions()
+    show "---------------------------------------"
+    show "Welcome to the Number Guessing Game!"
+    show "I'm thinking of a number between 1 and 100."
+    show "Try to guess it in as few attempts as possible."
+    show "---------------------------------------"
+done
+
+# Main game procedure
+do play_game()
+    # Generate a secret number
+    secret_number is random_number(1, 100)
+    attempts is 0
+    guessed_correctly is no
+    
+    # Display instructions
+    show_instructions()
+    
+    # Game loop
+    while not guessed_correctly
+        # Get user's guess
+        ask "Enter your guess (1-100): " into guess
+        
+        # Convert guess to a number
+        guess is number(guess)
+        
+        # Increment attempts
+        attempts is attempts + 1
+        
+        # Check the guess
+        when guess less than secret_number then
+            show "Too low! Try a higher number."
+        otherwise when guess greater than secret_number then
+            show "Too high! Try a lower number."
+        otherwise
+            show "Congratulations! You guessed the number in " + attempts + " attempts!"
+            guessed_correctly is yes
+        done
+    done
+    
+    # Ask if the player wants to play again
+    ask "Would you like to play again? (yes/no): " into play_again
+    
+    when play_again is "yes" then
+        play_game()
+    otherwise
+        show "Thanks for playing! Goodbye!"
+    done
+done
+
+# Start the game
+play_game() 

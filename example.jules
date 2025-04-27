@@ -1,0 +1,16 @@
+# Jules Example with Ask Command
+
+# Ask for user input
+ask "What is your name?" into name
+
+# Display the name
+show "Hello"
+show name
+
+# Ask for more input
+ask "What is your age?" into age
+
+# Display age information
+show "You are"
+show age
+show "years old."

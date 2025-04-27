@@ -1,0 +1,12 @@
+[
+    {
+        "key": "f6",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Run Jules File"
+    },
+    {
+        "key": "ctrl+f6",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Run Jules Interactive"
+    }
+]

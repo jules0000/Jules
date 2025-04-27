@@ -1,0 +1,125 @@
+# Jules Language Showcase (Simplified)
+
+show "Welcome to the Jules Language Showcase!"
+show "===================="
+
+# ---------------
+# Variables
+# ---------------
+show "# Variables"
+name is "Jules"
+age is 10
+pi is 3.14159
+is_learning is yes
+
+show "Name: " + name
+show "Age: " + text(age)
+show "Pi: " + text(pi)
+show "Learning? " + text(is_learning)
+show ""
+
+# ---------------
+# Data Structures
+# ---------------
+show "# Data Structures"
+
+# Lists
+fruits is ["apple", "banana", "orange"]
+show "Fruits: " + text(fruits)
+show "First fruit: " + fruits[0]
+
+# Dictionaries/Things
+person is {name: "Alice", age: 25, likes_coding: yes}
+show "Person: " + text(person)
+show "Person's name: " + person.name
+show "Person's age: " + text(person.age)
+show ""
+
+# ---------------
+# Control Structures
+# ---------------
+show "# Control Structures"
+
+# If statements
+show "Testing conditions:"
+when age greater than 18 then
+    show "You are an adult"
+otherwise when age greater than 12 then
+    show "You are a teenager"
+otherwise
+    show "You are a child"
+done
+
+# Basic counting loop (NOT using while loop)
+show "Counting to 5:"
+repeat 5 times
+    show text(count)
+done
+
+# Iterate through a list
+show "Fruit list:"
+repeat each fruit in fruits
+    show "- " + fruit
+done
+show ""
+
+# ---------------
+# Functions
+# ---------------
+show "# Functions"
+
+# Function definition
+make add(a, b)
+    return a + b
+done
+
+make multiply(a, b)
+    return a times b
+done
+
+make greet(person_name)
+    return "Hello, " + person_name + "!"
+done
+
+# Function calls
+result is add(5, 10)
+show "5 + 10 = " + text(result)
+
+result is multiply(6, 7)
+show "6 * 7 = " + text(result)
+
+greeting is greet(name)
+show greeting
+show ""
+
+# ---------------
+# Procedures
+# ---------------
+show "# Procedures"
+
+# Procedure definition
+do print_header(title)
+    show "-------------------"
+    show title
+    show "-------------------"
+done
+
+# Procedure call
+print_header("This is a Header")
+show ""
+
+# ---------------
+# Error Handling
+# ---------------
+show "# Error Handling"
+
+try
+    # This would normally cause an error
+    result is 10 divided by 0
+catch
+    show "Caught an error: Division by zero"
+done
+show ""
+
+show "===================="
+show "End of Jules Showcase!" 

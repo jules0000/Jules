@@ -1,0 +1,19 @@
+# Jules Math Example
+
+# Basic variables
+x is 10
+y is 5
+
+# Basic operations
+show "x + y = " + (x + y)
+show "x - y = " + (x - y)
+show "x * y = " + (x * y)
+show "x / y = " + (x / y)
+
+# Compound assignment
+result is x + y
+show "Result: " + result
+
+# Booleans
+is_greater is x > y
+show "Is x greater than y? " + is_greater 

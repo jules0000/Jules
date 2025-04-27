@@ -1,0 +1,11 @@
+# Simple Test File
+
+show "Starting test..."
+
+# Test simple repeat loop
+show "Testing repeat:"
+repeat 3 times
+    show "Iteration " + text(count)
+done
+
+show "Test complete!" 

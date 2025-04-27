@@ -1,0 +1,59 @@
+# Turtle graphics example in Jules
+
+# We would need to get the drawing library
+get drawing
+
+# Create a turtle
+create_turtle() into t
+
+# Set up colors
+colors is ["red", "orange", "yellow", "green", "blue", "purple"]
+
+# Function to draw a square
+make draw_square(turtle, size)
+    repeat 4 times
+        move_forward(turtle, size)
+        turn_right(turtle, 90)
+    done
+    return yes
+done
+
+# Function to draw a spiral
+make draw_spiral(turtle, size, angle, increment)
+    length is size
+    repeat 50 times
+        move_forward(turtle, length)
+        turn_right(turtle, angle)
+        length is length + increment
+    done
+done
+
+# Function to draw a flower
+make draw_flower(turtle, size)
+    repeat 36 times
+        draw_square(turtle, size)
+        turn_right(turtle, 10)
+    done
+done
+
+# Draw a colorful pattern
+pen_down(t)
+set_speed(t, "fast")
+
+repeat each color in colors
+    set_pen_color(t, color)
+    draw_spiral(t, 5, 90, 3)
+    turn_right(t, 60)
+done
+
+# Clear the drawing
+clear_screen()
+
+# Draw a flower
+set_pen_color(t, "pink")
+draw_flower(t, 100)
+
+# Hide the turtle when done
+hide_turtle(t)
+
+show "Drawing complete!" 

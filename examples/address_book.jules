@@ -1,0 +1,190 @@
+# Simple Address Book Application in Jules
+
+# Initialize the address book as an empty list
+contacts is []
+
+# Procedure to add a new contact
+do add_contact()
+    # Get contact details
+    ask "Enter name: " into name
+    ask "Enter phone number: " into phone
+    ask "Enter email: " into email
+    
+    # Create a new contact
+    new_contact is {name: name, phone: phone, email: email}
+    
+    # Add to contacts list
+    contacts is contacts + [new_contact]
+    
+    show "Contact added successfully!"
+done
+
+# Procedure to view all contacts
+do view_contacts()
+    when contacts is [] then
+        show "Address book is empty."
+    otherwise
+        show "===== CONTACTS ====="
+        repeat each contact in contacts
+            show "Name: " + contact.name
+            show "Phone: " + contact.phone
+            show "Email: " + contact.email
+            show "-------------------"
+        done
+    done
+done
+
+# Procedure to search for a contact
+do search_contacts()
+    ask "Enter search term: " into search_term
+    
+    found is no
+    
+    show "Search results:"
+    repeat each contact in contacts
+        # Check if search term appears in name, phone, or email
+        when contact.name contains search_term or contact.phone contains search_term or contact.email contains search_term then
+            show "Name: " + contact.name
+            show "Phone: " + contact.phone
+            show "Email: " + contact.email
+            show "-------------------"
+            found is yes
+        done
+    done
+    
+    when found is no then
+        show "No contacts found matching the search term."
+    done
+done
+
+# Procedure to edit a contact
+do edit_contact()
+    view_contacts()
+    
+    when contacts is [] then
+        return
+    done
+    
+    ask "Enter the name of the contact to edit: " into name_to_edit
+    
+    found is no
+    index is 0
+    
+    # Find the contact
+    repeat each contact in contacts
+        when contact.name is name_to_edit then
+            found is yes
+            stop  # Break the loop
+        done
+        index is index + 1
+    done
+    
+    when found is yes then
+        show "Editing contact: " + contacts[index].name
+        
+        ask "Enter new name (or press enter to keep current): " into new_name
+        ask "Enter new phone (or press enter to keep current): " into new_phone
+        ask "Enter new email (or press enter to keep current): " into new_email
+        
+        # Update only if new values are provided
+        when new_name is not "" then
+            contacts[index].name is new_name
+        done
+        
+        when new_phone is not "" then
+            contacts[index].phone is new_phone
+        done
+        
+        when new_email is not "" then
+            contacts[index].email is new_email
+        done
+        
+        show "Contact updated successfully!"
+    otherwise
+        show "Contact not found."
+    done
+done
+
+# Procedure to delete a contact
+do delete_contact()
+    view_contacts()
+    
+    when contacts is [] then
+        return
+    done
+    
+    ask "Enter the name of the contact to delete: " into name_to_delete
+    
+    found is no
+    index is 0
+    
+    # Find the contact
+    repeat each contact in contacts
+        when contact.name is name_to_delete then
+            found is yes
+            stop  # Break the loop
+        done
+        index is index + 1
+    done
+    
+    when found is yes then
+        # Remove the contact from the list
+        new_contacts is []
+        
+        repeat each contact in contacts
+            when contact.name is not name_to_delete then
+                new_contacts is new_contacts + [contact]
+            done
+        done
+        
+        contacts is new_contacts
+        show "Contact deleted successfully!"
+    otherwise
+        show "Contact not found."
+    done
+done
+
+# Main menu procedure
+do main_menu()
+    running is yes
+    
+    while running
+        show ""
+        show "===== ADDRESS BOOK ====="
+        show "1. Add Contact"
+        show "2. View All Contacts"
+        show "3. Search Contacts"
+        show "4. Edit Contact"
+        show "5. Delete Contact"
+        show "6. Exit"
+        show "======================="
+        
+        ask "Enter your choice (1-6): " into choice
+        
+        when choice is "1" then
+            add_contact()
+        otherwise when choice is "2" then
+            view_contacts()
+        otherwise when choice is "3" then
+            search_contacts()
+        otherwise when choice is "4" then
+            edit_contact()
+        otherwise when choice is "5" then
+            delete_contact()
+        otherwise when choice is "6" then
+            show "Goodbye!"
+            running is no
+        otherwise
+            show "Invalid choice. Please try again."
+        done
+    done
+done
+
+# Add some sample contacts
+contacts is contacts + [{name: "John Doe", phone: "555-1234", email: "john@example.com"}]
+contacts is contacts + [{name: "Jane Smith", phone: "555-5678", email: "jane@example.com"}]
+contacts is contacts + [{name: "Bob Jones", phone: "555-9012", email: "bob@example.com"}]
+
+# Start the application
+show "Welcome to the Address Book Application!"
+main_menu() 

@@ -1,0 +1,80 @@
+# Simple Calculator in Jules
+
+# Function to add two numbers
+make add(a, b)
+    return a + b
+done
+
+# Function to subtract two numbers
+make subtract(a, b)
+    return a - b
+done
+
+# Function to multiply two numbers
+make multiply(a, b)
+    return a times b
+done
+
+# Function to divide two numbers
+make divide(a, b)
+    when b is 0 then
+        show "Cannot divide by zero!"
+        return 0
+    otherwise
+        return a divided by b
+    done
+done
+
+# Procedure to display a welcome message
+do welcome()
+    show "Welcome to Jules Calculator!"
+    show "------------------------"
+done
+
+# Procedure to display the menu
+do show_menu()
+    show "Choose an operation:"
+    show "1. Add"
+    show "2. Subtract"
+    show "3. Multiply"
+    show "4. Divide"
+    show "5. Exit"
+done
+
+# Main program
+welcome()
+
+running is yes
+while running
+    show_menu()
+    
+    ask "Enter your choice (1-5):" into choice
+    
+    when choice is "5" then
+        show "Goodbye!"
+        running is no
+    otherwise
+        ask "Enter first number:" into num1
+        ask "Enter second number:" into num2
+        
+        # Convert string inputs to numbers
+        num1 is number(num1)
+        num2 is number(num2)
+        
+        when choice is "1" then
+            result is add(num1, num2)
+            show num1 + " + " + num2 + " = " + result
+        otherwise when choice is "2" then
+            result is subtract(num1, num2)
+            show num1 + " - " + num2 + " = " + result
+        otherwise when choice is "3" then
+            result is multiply(num1, num2)
+            show num1 + " * " + num2 + " = " + result
+        otherwise when choice is "4" then
+            result is divide(num1, num2)
+            show num1 + " / " + num2 + " = " + result
+        otherwise
+            show "Invalid choice! Please try again."
+        done
+    done
+done 

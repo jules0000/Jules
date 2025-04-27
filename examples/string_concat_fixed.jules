@@ -1,0 +1,22 @@
+# String Concatenation Test (Fixed)
+
+# Variables
+name is "Jules"
+age is 7
+
+# String concatenation
+show "My name is " + name
+show "I am " + text(age) + " years old"
+
+# Numbers
+a is 5
+b is 10
+show "a + b = " + text(a + b)
+
+# More complex expressions
+show "2 * 3 = " + text(2 times 3)
+show "10 / 2 = " + text(10 divided by 2)
+
+# Boolean values
+is_cool is yes
+show "Is cool? " + text(is_cool) 
